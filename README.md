@@ -32,9 +32,9 @@ CCMF library is an easy to use javascript client/node library that assist copyri
 [2]: http://semver.org/ "Semantic Versioning"
 
 * * * 
-##Overview
+## Overview
 
-###Philosophy
+### Philosophy
 
 CCMF is intended to safeguard  copyright owner's intellectual properties, by keeping track of the appearance of their content on the web. Eventually, CCMF would notify these owners if their copyright of their content has been violated on the web.
 
@@ -42,13 +42,13 @@ To facilitate this, CCMF would require a signature of author's original content.
 
 Another key idea is that the all computations can be accomplished via the client's browser or via the Node.JS environment. There is no centralised server requirement to use this library.
 
-###Requirements
+### Requirements
 
 To register and submit content, users have to register [an account](http://ccmf.ethanlim.net/users/signup) with Creative Commons.
 
-###Installation
+### Installation
 
-####Client Browser
+#### Client Browser
 
 Add ccmf library into your page:
 
@@ -56,7 +56,7 @@ Add ccmf library into your page:
 <script src='https://raw.github.com/ethanlim/ccmf/master/lib/build/ccmf.js'></script>
 ```
 
-####Node Module
+#### Node Module
 
 Insert ccmf into package.json and conduct a <code>npm install</code>:
 
@@ -66,7 +66,7 @@ Insert ccmf into package.json and conduct a <code>npm install</code>:
 }
 ```
 
-###Quick Start
+### Quick Start
 
 Create a text module object
  
@@ -86,7 +86,7 @@ var metadata = 	{
 		   	 	};
 ```
 
-####Register
+#### Register
 
 Execute the text module's register method to register any text content into Creative Common's database:
 
@@ -112,7 +112,7 @@ var storeCallback = function(error){
 				};
 ```
 
-###Search
+### Search
 
 Execute the search method to search for similar textual content to yours.
 
@@ -155,15 +155,15 @@ resultCallback = function(results){
 	};
 ```
 
-##Text Module
+## Text Module
 
-###General
+### General
 
 The previous <code>search</code> and <code>register</code> methods use 3 components,namely shingles extraction, minhashing and locality-sensitive hashing of the text module. These components dissect the intended textual content into signatures (patterns of integers). These signatures preserve the relationship between that textual content with other contents. The three step process is represented by converting text into shingles, minhashing of shingles and finally conduct lsh. The end product is a signature that can be stored efficiently and be identified as similar to another textual content's signature.
 
 ![text-register-image](http://ccmf.s3.amazonaws.com/img/views/texts/doc/general-working1.png)
 
-####Shingles
+#### Shingles
 
 Extracting shingles is the act of extracting sub-strings from a given text. Using ccmf's API, shingles can be extracted based on 3 different criteria:
 
@@ -197,7 +197,7 @@ After extracting a set of shingles,they generally occupy more space then actual 
 var shinglesFingerprintA = textMod.shinglesFingerprintConv(textAShingles);
 ```
 
-####MinHash
+#### MinHash
 
 Minhash is a technique or process of compressing the amount of data actually needed for comparison while preserving their inherit relationship with each other. 
 
@@ -221,7 +221,7 @@ Now generate the minhash signatures (they can contain signatures from 1 or more 
 var minHashSignatures = this.minHashSignaturesGen(signatures);
 ```
 
-####Locality-Sensitive Hashing (LSH)
+#### Locality-Sensitive Hashing (LSH)
 
 To compare each and every pair of minhash signatures to determine the most similar pair would be too inefficient. Normally for this use case, we only need to focus on pairs of signatures that are most likely to be similar and not on every pair. The search functions uses the underlying locality-sensitive hashing (LSH). The art of locality-sensitive hashing is that through multiple hashing of a minhash signature, eventually the similar text content would be hashed to the same location.
 
@@ -249,11 +249,11 @@ dataMod.conductLsh(minHashSignatures,callback);
 ```
 The callback function would be called and the similar minhash signatures would be returned.
 
-##Feature Request and Bug Fixes
+## Feature Request and Bug Fixes
 
 Submit all feature request and bug reports [here](https://github.com/ethanlim/ccmf/issues).
 
-##Versioning
+## Versioning
 
 Built on the rationale of providing maximum backward compatibility,CCMF adopts the [Semantic Versioning][2] v.2.0.0 guidelines.
 
@@ -270,14 +270,14 @@ And constructed with the following guidelines:
 - New additions without breaking backward compatibility bumps the minor (and resets the patch)
 - Bug fixes and misc changes bumps the patch
 
-##Authors
+## Authors
 
-### Ethan Lim ###
+### Ethan Lim
 - GitHub - [https://github.com/ethanlim/](https://github.com/ethanlim/)
 
-##Miscellaneous
+## Miscellaneous
 
-###Copyright & License
+### Copyright & License
 
 The MIT License (MIT)
 
@@ -301,6 +301,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-###Theoretical Reading 
+### Theoretical Reading 
 
 - **[Finding Similar Items](http://infolab.stanford.edu/~ullman/mmds.html)**
